@@ -1,59 +1,46 @@
+
+
+/*
+ * Reads the Excel file and Prints Records out of it .
+ */
 package com.soft.test;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+/**
+ *
+ * @author Phanindhar
+ */
+import java.io.*;
 
 public class ReadXlsxXlsFile {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) throws Exception {
-		OPCPackage pkg = OPCPackage.open(args[0]);
-		XSSFWorkbook wb = new XSSFWorkbook(pkg);
-		XSSFSheet sheet = wb.getSheetAt(0);
-		Iterator<Row> rows = sheet.rowIterator();
-		while (rows.hasNext()) {
-			XSSFRow row = (XSSFRow) rows.next();
-			List<String> cellArray = getCells(row);
-			displayCells(cellArray);
-		}
+    private final static int EXIT_STATUS_INPUT_FILE_NOT_FOUND = 1;
+    private final static int EXIT_STATUS_INPUT_FILE_IO_EXCEPTION = 2;
+    private static InputStream inputStream;
+    private static File inputFile = null;
 
-	}
+    public static void main(String[] args) {
 
-	private static void displayCells(List<String> cellList) {
-		// TODO Auto-generated method stub
-		Iterator<String> iter = cellList.iterator();
-		while(iter.hasNext()) {
-			System.out.print(iter.next()+" ");
-		}
-		System.out.println();
-	}
+        String inputFileName = args[0];
+        try {
+            inputFile = new File(inputFileName);
+            inputStream = getInputStream(inputFile);
+        } catch (FileNotFoundException e) {
+            System.err.printf("error.file.notFound", e);
+            System.exit(EXIT_STATUS_INPUT_FILE_NOT_FOUND);
+        }
+        ExcelConverter conv = new ExcelConverter();
+        try {
+            if (inputFileName.toLowerCase().endsWith(".xls")) {
+                conv.processXlsFile(0,inputStream,System.out);
+            } else {
+                conv.processXlsxFile(0,inputStream,System.out);
+            }
+        } catch (IOException e) {
+            System.err.printf("error.file.ioException", e);
+            System.exit(EXIT_STATUS_INPUT_FILE_IO_EXCEPTION);
+        }
+    }
 
-	private static List<String> getCells(XSSFRow row) {
-		Iterator<Cell> cells = row.cellIterator();
-		ArrayList<String> cellList = new ArrayList<String>();
-		while (cells.hasNext()) {
-			XSSFCell cell = (XSSFCell) cells.next();
-			if(cell != null) {
-				if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
-					cellList.add(cell.getStringCellValue());
-				}
-				else if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
-					cellList.add(""+cell.getNumericCellValue());
-				}
-			}
-		}
-		return cellList;
-	}
-
+    private static InputStream getInputStream(File file) throws FileNotFoundException {
+        return new FileInputStream(file);
+    }
 }
