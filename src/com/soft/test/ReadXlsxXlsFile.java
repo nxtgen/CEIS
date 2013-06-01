@@ -18,7 +18,7 @@ public class ReadXlsxXlsFile {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		OPCPackage pkg = OPCPackage.open("D:\\6E25.xlsx");
+		OPCPackage pkg = OPCPackage.open("P:\\workspaces\\CEIS\\CEIS\\6E25.xlsx");
 		XSSFWorkbook wb = new XSSFWorkbook(pkg);
 		XSSFSheet sheet = wb.getSheetAt(0);
 		Iterator<Row> rows = sheet.rowIterator();
