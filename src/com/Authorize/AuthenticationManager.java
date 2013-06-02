@@ -2,12 +2,13 @@
  * Authentication Manager business class.
  * 
  */
-package Authorize;
+package com.Authorize;
 
-import Utilities.DBUtils;
-import ceis.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
+
+import com.Utilities.DBUtils;
+import com.ceis.User;
 
 /**
  *

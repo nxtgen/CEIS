@@ -2,12 +2,12 @@
  * Generic Jdbc functionality
  * 
  */
-package Utilities;
+package com.Utilities;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.PreparedStatement;
 
 public class DBUtils {
     public static Connection getConnection()

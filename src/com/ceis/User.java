@@ -2,7 +2,7 @@
  * User bean class
  * 
  */
-package ceis;
+package com.ceis;
 
 import java.io.Serializable;
 

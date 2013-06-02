@@ -2,10 +2,11 @@
  * Connection Pool implementation based on Apache-dbcp
  * 
  */
-package Utilities;
+package com.Utilities;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
