@@ -1,0 +1,9 @@
+1. For the login functionality:
+  a. Case-sensitive password match
+  b. Handle browser back button events
+  c. Incorporate "role"
+  d. Create db scripts for role (mapping roles to access controls)
+  e. Incorporate minimum number of login trials and lockout on expiry of trials
+  f. Incorporate header and footer (future)
+  g. Consider spring mvc and webflow for controller and navigation functionality (future)
+  h. Consider ORM framework before the db layer gets bulky (immediate). Examples: Hibernate, ebeans...
