@@ -7,3 +7,7 @@
   f. Incorporate header and footer (future)
   g. Consider spring mvc and webflow for controller and navigation functionality (future)
   h. Consider ORM framework before the db layer gets bulky (immediate). Examples: Hibernate, ebeans...
+  
+2. For file upload feature .
+  a. Do an analysis on feasability of using http://blueimp.github.io/jQuery-File-Upload/ . 
+  
