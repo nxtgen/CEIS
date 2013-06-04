@@ -12,19 +12,50 @@ public class FlightManifestBean {
 	String passengerName;
 	String cls;
 	String seat;
-	String sex;
+	String gender;
 	Date dob; 
 	String passportNumber;
+	
 	String nationality;
 	String bags;
-	
+	FlightManifestBean infant;
+	public FlightManifestBean getInfant() {
+		return infant;
+	}
+	public void setInfant(FlightManifestBean infant) {
+		this.infant = infant;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((passportNumber == null) ? 0 : passportNumber.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FlightManifestBean other = (FlightManifestBean) obj;
+		if (passportNumber == null) {
+			if (other.passportNumber != null)
+				return false;
+		} else if (!passportNumber.equals(other.passportNumber))
+			return false;
+		return true;
+	}
 	@Override
 	public String toString() {
 		return "FlightManifestBean [manifestName=" + manifestName
 				+ ", passengerName=" + passengerName + ", cls=" + cls
-				+ ", seat=" + seat + ", sex=" + sex + ", dob=" + dob
+				+ ", seat=" + seat + ", gender=" + gender + ", dob=" + dob
 				+ ", passportNumber=" + passportNumber + ", nationality="
-				+ nationality + ", bags=" + bags + "]";
+				+ nationality + ", bags=" + bags + ", infant=" + infant + "]";
 	}
 	public String getManifestName() {
 		return manifestName;
@@ -51,10 +82,10 @@ public class FlightManifestBean {
 		this.seat = seat;
 	}
 	public String getSex() {
-		return sex;
+		return gender;
 	}
 	public void setSex(String sex) {
-		this.sex = sex;
+		this.gender = sex;
 	}
 	public Date getDob() {
 		return dob;
