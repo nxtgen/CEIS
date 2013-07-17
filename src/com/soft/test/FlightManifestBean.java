@@ -19,6 +19,10 @@ public class FlightManifestBean {
 	String nationality;
 	String bags;
 	FlightManifestBean infant;
+	public FlightManifestBean(String passportNumber) {
+		super();
+		this.passportNumber = passportNumber;
+	}
 	public FlightManifestBean getInfant() {
 		return infant;
 	}
@@ -81,10 +85,10 @@ public class FlightManifestBean {
 	public void setSeat(String seat) {
 		this.seat = seat;
 	}
-	public String getSex() {
+	public String getgender() {
 		return gender;
 	}
-	public void setSex(String sex) {
+	public void setGender(String sex) {
 		this.gender = sex;
 	}
 	public Date getDob() {
